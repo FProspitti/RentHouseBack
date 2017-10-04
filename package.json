@@ -1,0 +1,24 @@
+{
+  "name": "renthouseback",
+  "version": "1.0.0",
+  "description": "Backend ",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.1",
+    "mongoose": "^4.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FProspitti/RentHouseBack.git"
+  },
+  "author": "Prospitti Federico",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FProspitti/RentHouseBack/issues"
+  },
+  "homepage": "https://github.com/FProspitti/RentHouseBack#readme"
+}
