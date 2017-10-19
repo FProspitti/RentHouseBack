@@ -35,7 +35,7 @@ router.post('/authenticate', (req,res, next) => {
 User.getUserByUserName(username, (err,user) =>{
     if(err) throw err;
 if(!user){
-    return res.json({sucess : false, msg: 'Usuario no encontrado'});
+    return res.json({success : false, msg: 'Usuario no encontrado'});
 }
 
 User.comparePassword(password, user.password, (err, isMatch) => {
@@ -46,7 +46,7 @@ if(isMatch){
     });
 
     res.json({
-        sucess: true,
+        success: true,
         token: 'JWT '+token,
         user:{
             id: user._id,
