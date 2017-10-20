@@ -44,6 +44,10 @@ app.get('/', (req,res) => {
     res.send('Invalido');
 });
 
+// app.get('*', (req,res) => {
+//     res.sendFile(path.join(__dirname, 'dist/index.hstm'));
+// });
+
 
 app.listen(port, () => {
     console.log("server iniciao en puerto: "+port)
