@@ -51,3 +51,12 @@ module.exports.comparePassword = function (candidatePassword, hash, callback) {
     });
 }
 
+module.exports.getUsers= function (req, callback) {
+    User.find(null,callback);
+}
+
+module.exports.deteleUser= function (id, callback) {
+    User.findByIdAndRemove(id,callback);
+}
+
+

@@ -69,7 +69,23 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), (req,res,
    res.json({user: req.user});
 });
 
+router.get('/users', passport.authenticate('jwt', {session: false}), function(req, res) {
+    User.getUsers(req, function(err,user1) {
+        res.send(user1);
 
+})
+});
+
+router.post('/deleteUser', passport.authenticate('jwt', {session: false}), function(req, res) {
+    consol
+    const id= req.body._id;
+    console.log("id");
+    console.log(id);
+    User.deteleUser(id, function(err,user1) {
+        res.send(user1);
+
+    })
+});
 
 
 module.exports = router;
