@@ -4,6 +4,7 @@
 const  mongoose=require('mongoose');
 const  bcrypt = require('bcryptjs');
 const  config=require('../config/database');
+const  hoy=new Date();
 
 const  UserSchema = mongoose.Schema({
    name : {
@@ -20,6 +21,16 @@ const  UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    profile: {
+        type: String,
+    },
+    baja: {
+        type: Boolean,
+        default: false
+    },
+    fechaBaja: {
+        type: Date,
     }
 });
 
@@ -52,11 +63,36 @@ module.exports.comparePassword = function (candidatePassword, hash, callback) {
 }
 
 module.exports.getUsers= function (req, callback) {
-    User.find(null,callback);
+    const  query = {baja: false}
+    User.find(query,callback);
 }
 
 module.exports.deteleUser= function (id, callback) {
     User.findByIdAndRemove(id,callback);
+}
+
+module.exports.deleteUser= function (id, res) {
+    User.findById(id, function(error, user){
+        if(error){
+            callback(null,'Error al intentar modificar el usuario.');
+        }else{
+            var usuario = user;
+            usuario.fechaBaja = hoy;
+            usuario.baja=true;
+            usuario.save(res);
+        }
+    });
+}
+
+module.exports.updateUser= function (id, res) {
+    User.findById(id, function(error, user){
+        if(error){
+            callback(null,'Error al intentar modificar el usuario.');
+        }else{
+            var usuario = user;
+            usuario.save(res);
+        }
+    });
 }
 
 
