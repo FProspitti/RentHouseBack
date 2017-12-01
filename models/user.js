@@ -84,14 +84,19 @@ module.exports.deleteUser= function (id, res) {
     });
 }
 
-module.exports.updateUser= function (id, res) {
-    User.findById(id, function(error, user){
+module.exports.updateUser= function (user1, res) {
+    User.findById(user1._id, function(error, user){
         if(error){
             callback(null,'Error al intentar modificar el usuario.');
         }else{
             var usuario = user;
+            usuario.baja=user1.baja;
+            usuario.name=user1.name;
+            usuario.username=user1.username;
+            usuario.email=user1.email;
+            usuario.password=user1.password;
             usuario.save(res);
-        }
+    }
     });
 }
 

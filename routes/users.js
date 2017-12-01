@@ -95,7 +95,7 @@ router.put('/deleteUser', passport.authenticate('jwt', {session: false}), functi
 });
 
 router.put('/updateUser', passport.authenticate('jwt', {session: false}), function(req, res) {
-    User.updateUser(req.body._id, function(err,user1) {
+    User.updateUser(req.body, function(err,user1) {
         if(err){
             res.json({success: false, msg: 'Error actualizar'});
         }else{
