@@ -8,6 +8,7 @@ const jwt=  require('jsonwebtoken');
 const config= require('../config/database');
 const User = require('../models/user');
 const dia = new Date();
+const mailer = require('express-mailer');
 
 //Registro
 router.post('/register', (req,res, next) => {
@@ -102,6 +103,32 @@ router.put('/updateUser', passport.authenticate('jwt', {session: false}), functi
             res.json({success: true, msg: 'Usuario modificado'});
         }
     })
+});
+
+router.get('/sendMail', function (req, res, next) {
+    mailer.extend(express(),{
+        from: 'federico1236@gmail.com', //req.body.email,
+        host:'smtp.gmail.com',
+        secureConnection: true,
+        port: 465,
+        transportMethod: 'SMTP',
+        auth: {
+            user: 'federico1236@gmail.com',
+            pass: '1085785710268'
+        }
+
+    });
+    router.mailer.send('email-request-sent',{
+        to: 'federico_123_6@hotmail.com',
+        subject: req.body.subject,
+        message: req.body.message
+
+    }, function(err){
+        if(err){
+            console.log('error');return
+        }
+        res.send('email sent');
+    });
 });
 
 module.exports = router;
