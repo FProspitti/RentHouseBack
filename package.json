@@ -8,15 +8,15 @@
     "start": "node app"
   },
   "dependencies": {
-    "express": "*",
-    "mongoose": "*",
     "bcryptjs": "*",
-    "cors": "*",
-    "jsonwebtoken": "*",
     "body-parser": "*",
-    "passport":"*",
-    "passport-jwt":"*"
-
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "nodemailer": "^4.4.0",
+    "passport": "*",
+    "passport-jwt": "*"
   },
   "repository": {
     "type": "git",

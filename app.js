@@ -22,7 +22,8 @@ mongoose.connection.on('erro', (err) =>{
 
 const  app=express();
 
-const users= require('./routes/users')
+const users= require('./routes/users');
+const mail= require('./routes/mails');
 
 const  port = 3000;
 
@@ -39,6 +40,7 @@ require('./config/passport')(passport);
 
 
 app.use('/users', users);
+app.use('/mail', mail);
 
 app.get('/', (req,res) => {
     res.send('Invalido');

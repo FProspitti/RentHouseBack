@@ -118,7 +118,7 @@ router.get('/sendMail', function (req, res, next) {
         }
 
     });
-    router.mailer.send('email-request-sent',{
+    express().mailer.send('email-request-sent',{
         to: 'federico_123_6@hotmail.com',
         subject: req.body.subject,
         message: req.body.message
