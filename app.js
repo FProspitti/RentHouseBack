@@ -24,6 +24,7 @@ const  app=express();
 
 const users= require('./routes/users');
 const mail= require('./routes/mails');
+const unidades= require('./routes/unidades');
 
 const  port = 3000;
 
@@ -41,6 +42,7 @@ require('./config/passport')(passport);
 
 app.use('/users', users);
 app.use('/mail', mail);
+app.use('/unidades', unidades);
 
 app.get('/', (req,res) => {
     res.send('Invalido');
