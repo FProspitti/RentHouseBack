@@ -52,6 +52,6 @@ app.get('/', (req,res) => {
 
 
 app.listen(port, () => {
-    console.log("server iniciao en puerto: "+port)
+    console.log("server iniciado en puerto: "+port)
 });
 
