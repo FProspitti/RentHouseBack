@@ -46,3 +46,11 @@ module.exports.getUnidades= function (req, callback) {
     const  query = {baja: false}
     Unidades.find(query,callback);
 }
+
+module.exports.addUnidades= function (newUnidad, callback) {
+    newUnidad.descripcion = 'Dto';
+    newUnidad.domicilio='Araoz';
+    newUnidad.save(callback);
+
+}
+

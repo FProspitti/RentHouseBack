@@ -17,5 +17,19 @@ router.get('/unidades', passport.authenticate('jwt', {session: false}), function
 })
 });
 
+router.post('/nuevaUnidad', (req,res, next) => {
+    let newUnidad= new Unidad({
+        descripcion: 'Dtos',
+    });
+
+Unidad.addUnidades(newUnidad, (err,user) =>{
+    if(err){
+        res.json({success: false, msg: 'Error al crear unidad'});
+    }else{
+        res.json({success: true, msg: 'Unidad creada'});
+}
+});
+});
+
 
 module.exports = router;

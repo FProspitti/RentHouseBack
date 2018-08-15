@@ -12,6 +12,9 @@ router.get('/sendMail', function (req, res, next) {
         auth: {
             user: 'federico1236@gmail.com',
             pass: '1085785710268'
+        },
+        tls:{
+            rejectUnauthorized: false
         }
     });
 
