@@ -54,3 +54,34 @@ module.exports.addUnidades= function (newUnidad, callback) {
 
 }
 
+
+module.exports.deleteUnidad= function (id, res) {
+    Unidades.findById(id, function(error, unidad){
+        if(error){
+            callback(null,'Error al intentar modificar el usuario.');
+        }else{
+            var unidad = unidad;
+            unidad.fechaBaja = hoy;
+            unidad.baja=true;
+            unidad.save(res);
+        }
+    });
+}
+
+module.exports.updateUnidad= function (unidad1, res) {
+    Unidades.findById(unidad1._id, function(error, unidad){
+        if(error){
+            callback(null,'Error al intentar modificar el usuario.');
+        }else{
+            var unidad = unidad;
+            // usuario.baja=user1.baja;
+            // usuario.name=user1.name;
+            // usuario.username=user1.username;
+            // usuario.email=user1.email;
+            // usuario.password=user1.password;
+            unidad.save(res);
+        }
+    });
+}
+
+

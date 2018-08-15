@@ -32,4 +32,26 @@ Unidad.addUnidades(newUnidad, (err,user) =>{
 });
 
 
+router.put('/deleteUnidad', passport.authenticate('jwt', {session: false}), function(req, res) {
+    Unidad.deleteUnidad(req.body._id, function(err,user1) {
+        if(err){
+            res.json({success: false, msg: 'Error actualizar'});
+        }else{
+            res.json({success: true, msg: 'Usuario modificado'});
+        }
+    })
+});
+
+router.put('/updateUnidad', passport.authenticate('jwt', {session: false}), function(req, res) {
+    Unidad.updateUnidad(req.body, function(err,user1) {
+        if(err){
+            res.json({success: false, msg: 'Error actualizar'});
+        }else{
+            res.json({success: true, msg: 'Usuario modificado'});
+        }
+    })
+});
+
+
+
 module.exports = router;
